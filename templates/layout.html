@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Asterのホームページ{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #dfa36c;
+             font-family: "Zen Maru Gothic", sans-serif; }
+        .starter-template { padding: 40px 15px;
+             background-color: white; 
+             margin-top: 30px; 
+             border-radius: 10px; }
+        .fun{color:#0004ff ; font-weight: bold;}
+        .heading-18 {
+            padding: .5em .7em;
+            border: 2px solid #a0b3f0;
+            box-shadow: 5px 5px #a0b3f0;
+            color: #a0b3f0;
+            font-weight: bold;
+        }
+        .zen-maru-gothic-regular {
+        font-family: "Zen Maru Gothic", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        }
+        .center{
+            text-align: center;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            width: 100%; /* ← これを足すと、横幅いっぱいに広がって真ん中が安定するよ */
+        }
+        .button-4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            margin:0 auto;
+            padding: .9em 2em;
+            border: none;
+            border-bottom: solid 5px #0004ff
+            border-radius: 25px;
+            background-color: #a0b3f0;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1em;
+            transition: .5s ease;
+        }
+
+        .button-4:hover {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+        .textbox-2-label,
+        .textbox-2 {
+            color: #333;
+        }
+
+        .textbox-2-label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: .9em;
+        }
+
+        .textbox-2 {
+            width:width: 250px;           /* 横幅を広げる */
+            padding: 10px;         /* 中の文字に余白を作る */
+            border: 1px solid #ccc; /* 枠線を細く */
+            border-radius: 5px;     /* 角を丸く */
+            font-size: 16px;        /* 文字を少し大きく */
+            display: block;        /* 改行できるようにする */
+            margin: 10px auto; 100%;
+                
+            background: #fff2e5;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .textbox-2::placeholder {
+            color: #999;
+        }
+        .list-4 {
+    border: 2px solid #0004ff
+        }
+
+        .list-4 div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 10px 0;
+            background-color: #0004ff
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .list-4 ul {
+            list-style-type: disc;
+            margin: 0;
+            padding: 1em 1em 1em 2.5em;
+        }
+
+        .list-4 li {
+            padding: .3em .3em .3em 0;
+        }
+
+        .list-4 li::marker {
+            color: #0004ff
+            font-size: 1.1em;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="starter-template">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <footer>
+        <p class="center">original by Aster</p>
+    </footer>
+</body>
+</html>

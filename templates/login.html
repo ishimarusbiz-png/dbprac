@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}ホーム：Astarのホームページ{% endblock %}
+
+{% block content %}
+    <h1 class="heading-18 center">Astarのホームページ</h1>
+
+    {% if error %}
+        <p style="color: red;" class="center">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" style="margin-top: 30px;">
+        <div class="login-container">
+            <span class="textbox-2-label center">パスワードを入力</span>
+            <input type="password" name="password" placeholder="パスワードを入力" class="textbox-2">
+        </div>
+
+        <div style="margin-top: 40px;">
+            <button type="submit" class="button-4">ログイン</button>
+        </div>
+    </form>
+{% endblock %}
