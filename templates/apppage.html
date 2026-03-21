@@ -10,5 +10,57 @@
     <p>no text</p>
 </div>
 <br>
+<div class="table-container">
+<table border="1">
+    <thead>
+        <tr> 
+            <th>日時</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>メールアドレス</th>
+            <th>パスワード</th>
+            <th>URL</th>
+            <th>UserAgent</th>
+        </tr> </thead>
+    <tbody>
+    {% for item in datalist%}
+         <tr>
+            <td>{{ item.日時 }}</td>
+            <td>{{ item.ID }}</td>
+            <td>{{ item.名前 }}</td>
+            <td>{{ item.メールアドレス }}</td>
+            <td>{{ item.パスワード }}</td>
+            <td>{{ item.URL }}</td>
+            <td>{{ item.UserAgent }}</td>
+        </tr>   
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<style>
+    /* 表全体のデザイン */
+/* 1. テーブルを囲む箱の設定：はみ出したら横スクロールさせる */
+    .table-container {
+        width: 100%;
+        overflow-x: auto; /* 横方向にはみ出したらスクロールバーを出す */
+        -webkit-overflow-scrolling: touch; /* スマホでスルスル動くようにする */
+    }
 
+    /* 2. テーブル自体の設定：最低限の幅を確保しつつ、基本は100% */
+    table {
+        width: 100%;
+        min-width: 800px; /* 💡ここがポイント！項目が多いので、これより狭くならないようにして文字崩れを防ぐ */
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        table-layout: auto; /* 内容に合わせて幅を自動調整 */
+    }
+
+    /* 文字が重ならないように余白を調整 */
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        white-space: nowrap; /* 💡文字を勝手に改行させない（1行でピシッと見せる） */
+    }
+</style>
 {% endblock %}

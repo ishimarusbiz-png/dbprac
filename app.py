@@ -1,5 +1,9 @@
 #coding:utf-8
 import mariadb
+import sys
+import pandas
+import pymysql
+from read import Read #read.py を読み込む
 from flask import Flask, render_template, request, redirect, url_for
 
 # Flaskアプリケーションのインスタンス化
@@ -34,7 +38,9 @@ def main_page():
 @app.route("/apppage")
 def app_page():
     # ログイン成功後に表示したいHTMLファイルを指定（例: index.html）
-    return render_template("apppage.html")
+    db_tool=Read()
+    rows=db_tool.get_data()
+    return render_template("apppage.html",datalist=rows)
 
 
 if __name__ == "__main__":
