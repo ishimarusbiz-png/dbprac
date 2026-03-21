@@ -1,5 +1,6 @@
 #coding:utf-8
 import os
+import mariadb
 from flask import Flask, render_template, request, redirect, url_for
 
 # Flaskアプリケーションのインスタンス化

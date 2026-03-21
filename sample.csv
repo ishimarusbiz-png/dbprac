@@ -1,0 +1,102 @@
+日時,ID,名前,メールアドレス,パスワード,URL,UserAgent,サイズ
+2026/02/23 10:15:32,USR-6a2b8,Sato Kenji,sato_k@example.jp,8v#Nq2_ZaP,https://secure-api.test.jp/v1/resource,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,4120
+2026/01/12 14:05:22,USR-1f9e4,Tanaka Yumi,yumi.t@cloud-services.net,G9k!rT5mZ?,https://app.example.com/dashboard/settings,Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15,12840
+2025/11/30 23:50:11,USR-d3c2a,Jackson Mark,m.jackson@test-corp.com,fW3#xL8p1$,https://api.gateway.io/auth/login,Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,542
+2026/02/05 08:30:45,USR-b8f1c,Suzuki Hana,h-suzuki@sample.org,uB6$jH2vY!,https://example.jp/download/manual.pdf,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,204560
+2025/12/25 18:22:19,USR-e5d7a,Williams David,d.williams@global-net.com,rE1!qA7zC#,https://portal.service-hub.net/profile,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0,3200
+2026/01/08 09:12:03,USR-a4b9d,Takahashi Ren,ren_t@web-tool.jp,zK4&mN9xW%,https://dev.example.com/api/v2/status,curl/8.4.0,180
+2026/02/18 12:44:56,USR-c2f5e,Ito Mei,mei.ito@edu-inst.ac.jp,tV9*pC3dR^,https://learning.univ.ac.jp/courses/302,Mozilla/5.0 (iPad; CPU OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,45210
+2026/02/20 21:05:33,USR-9e8d1,Smith Sarah,sarah.s@test-mail.com,hM2@bS5kT&,https://cloud.storage.org/files/img_001.jpg,Mozilla/5.0 (Android 14; Mobile; rv:121.0) Gecko/121.0 Firefox/121.0,1560000
+2025/11/15 03:20:12,USR-7d6f3,Watanabe Shota,shota.w@example.com,jX8#uG1fY*,https://secure.bank.jp/transaction/history,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,2450
+2026/01/30 15:55:40,USR-4c2a9,Kato Yui,yui.kato@it-solution.co.jp,vN5!mP2wE,https://example.com/contact/form,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,890
+2026/02/10 11:22:33,USR-5b3e2,Brown James,james.b@net-provider.com,pL9$kR4vS,https://search.engine.net/q=test,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,12400
+2026/02/22 07:15:09,USR-2f8d6,Nakamura Riku,riku.n@test-lab.org,mX3#zQ7wG!,https://lab.example.jp/research/data,Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0,85400
+2025/12/01 19:40:25,USR-1a9c7,Kobayashi Sora,sora_k@web-mail.jp,bT5&nH1mK@,https://mail.example.jp/inbox/1,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,1200
+2026/01/25 10:05:12,USR-d4e8f,Garcia Maria,m.garcia@global.com,qV8#pC4zR$,https://example.com/api/auth,curl/7.81.0,312
+2026/02/15 22:18:44,USR-8c3b1,Yoshida Daiki,daiki.y@sample-it.jp,nW2!mS9xT^,https://docs.sample.jp/readme.md,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,21500
+2026/02/21 16:30:59,USR-f7a2d,Miller Robert,robert.m@test.com,kP5*jG3vL&,https://shop.example.com/cart/add,Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,5400
+2026/02/14 09:05:22,USR-b5e1a,Sasaki Hina,hina_s@example.jp,zX9#uR2fY*,https://my.portal.jp/home,Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0,32100
+2025/11/20 14:45:11,USR-3d9f5,Davis Linda,l.davis@corp-net.com,hY1@bN8mK!,https://intranet.corp.com/news,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,45600
+2026/01/05 18:20:33,USR-6e4c2,Yamaguchi Kaito,kaito.y@test.jp,mT4%pS7wG#,https://example.jp/api/v1/user/102,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,124
+2026/02/19 11:10:45,USR-a2b8f,Wilson Susan,susan.w@global.net,qR2&mN5xT@,https://service.hub.net/support/ticket,Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,9800
+2025/12/15 20:55:12,USR-9d1e4,Matsumoto Ren,ren_m@example.org,jL8!kP3zS$,https://open-data.org/api/get?id=50,curl/8.5.0,2048
+2026/02/08 13:40:22,USR-c5f3a,Taylor Michael,m.taylor@test.com,vS4#mG9wX%,https://example.com/assets/css/style.css,Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,15200
+2026/01/22 08:15:33,USR-4b7e9,Inoue Rina,rina.i@it-lab.jp,kH2*pT6vY^,https://it-lab.jp/blog/article/25,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15,34200
+2026/02/23 09:30:11,USR-d2c1a,Anderson Kevin,kevin.a@global-tech.com,xM9&rB1mK&,https://tech-api.global.com/v1/auth,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,412
+2026/02/02 22:05:45,USR-f8e4d,Kimura Takumi,takumi.k@example.jp,pZ5#jG2vT*,https://example.jp/users/me/profile,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,2300
+2025/11/25 10:12:33,USR-b3a1c,Thomas Barbara,b.thomas@test-corp.org,qW8@pL4zR!,https://internal.test.org/docs/policy,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0,56700
+2026/01/18 16:40:12,USR-7f5e2,Hayashi Haru,haru.h@sample-net.jp,mB3%nS7xG#,https://api.sample-net.jp/health,curl/7.88.1,45
+2026/02/12 11:25:56,USR-1d4b9,Moore Joseph,j.moore@cloud-net.com,hY1&kT5vW$,https://cloud.net/api/v2/files,Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,1280
+2025/12/10 09:05:44,USR-a5c3e,Shimizu Yuna,yuna_s@example.com,zX9!uG1fR%,https://example.com/contact,Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0,3400
+2026/01/28 14:15:22,USR-c9d1f,White Charles,c.white@it-services.net,kP2#jL8vT^,https://it-services.net/dashboard,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,14500
+2026/02/21 23:58:11,USR-2a8b3,Yamada Taro,taro_yamada@test.jp,vM5*pT2wS&,https://test.jp/api/login,Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,612
+2026/02/05 18:30:45,USR-b4f7e,Harris Margaret,m.harris@example.org,qZ8#pS1vK*,https://org-portal.example.org/home,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,24500
+2025/11/12 03:22:19,USR-d1e9a,Ikeda Kenta,kenta.i@it-lab.jp,xW3!mB7zT!,https://lab.it-lab.jp/research/1,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,89200
+2026/01/15 08:45:11,USR-f3a2c,Martin Christopher,c.martin@global.net,hN9@kT1vR#,https://global.net/support,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15,12500
+2026/02/10 12:05:33,USR-6b8d1,Abe Nanami,nanami.a@example.com,kY2$pS5wG$,https://example.com/api/v1/meta,curl/8.4.0,240
+2026/01/02 19:12:45,USR-4c5e8,Thompson Daniel,d.thompson@test.jp,vM1%nL9xT%,https://test.jp/assets/js/app.js,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0,345000
+2025/12/28 11:44:56,USR-e2f5d,Okada Daiki,daiki_o@web-corp.jp,pS8&rG3vW^,https://web-corp.jp/services,Mozilla/5.0 (Android 14; Mobile; rv:121.0) Gecko/121.0 Firefox/121.0,15400
+2026/02/18 21:05:12,USR-a9b3f,Clark Patricia,p.clark@global-it.com,zX4*pC2zR&,https://it.global.com/auth,Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,890
+2026/02/20 15:55:22,USR-d7a2e,Sato Miyu,miyu.s@sample.org,mN5#jB1vK*,https://sample.org/news/event/10,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,23100
+2025/11/05 10:22:33,USR-1c4b9,Lewis Richard,r.lewis@test-corp.com,hY8!kT3zW!,https://api.test-corp.com/v2/data,curl/7.85.0,4120
+2026/01/10 09:30:11,USR-3e5f2,Fujita Ren,ren.f@it-services.jp,qW2$pL7vY#,https://services.jp/dashboard,Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,12500
+2026/02/22 16:40:45,USR-b8d1a,Walker Susan,s.walker@global.net,vS5%nB1wG$,https://global.net/api/v1/status,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,150
+2026/01/25 22:05:12,USR-f4a2c,Nakajima Kento,kento.n@example.jp,zM8&rT3vX%,https://example.jp/download/file.zip,Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0,10485760
+2025/12/05 14:15:33,USR-2c9e7,Hall Thomas,t.hall@test-corp.org,pL2*jG8zW^,https://internal.test-corp.org/login,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,2300
+2026/02/12 08:45:56,USR-6d3f1,Maeda Yua,yua_m@sample-it.jp,hY9#pC1vK&,https://sample-it.jp/blog/1,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,12400
+2026/01/18 19:12:44,USR-a5b8e,Allen Sandra,s.allen@it-services.net,vM3!nL8wT*,https://it-services.net/api/auth,curl/8.4.0,450
+2026/02/23 03:22:11,USR-d8e1f,Kondo Shota,shota.k@example.com,zW5@pT2zR!,https://example.com/api/v1/users/me,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,812
+2026/01/05 10:05:33,USR-2f4c9,Young Kenneth,k.young@global-net.com,qL8$kT4vG#,https://global-net.com/home,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,34200
+2025/12/20 18:30:12,USR-e7d3a,Ishikawa Sora,sora.i@test.jp,pY2&mB7zW$,https://test.jp/docs/api,Mozilla/5.0 (Android 14; Mobile; rv:121.0) Gecko/121.0 Firefox/121.0,45600
+2026/02/15 11:10:45,USR-b9c1e,King Betty,b.king@cloud-tech.org,hM1*pL5vX%,https://cloud-tech.org/files/report.pdf,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0,1250000
+2026/01/30 09:40:22,USR-7a2d5,Murakami Haru,haru_m@example.jp,zX4#uG1vT^,https://example.jp/contact/success,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,1200
+2026/02/22 22:55:12,USR-d4f8b,Wright Steven,s.wright@global.com,vN9!mP2wG&,https://global.com/api/v2/meta,curl/7.81.0,310
+2025/11/18 14:15:33,USR-1e5c3,Noguchi Yui,yui.n@sample.org,pL5*jT8zR*,https://sample.org/auth/callback,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,890
+2026/01/12 08:30:45,USR-6a9b4,Lopez Donna,d.lopez@it-corp.net,hM2@bS7vW!,https://it-corp.net/dashboard,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15,15200
+2026/02/20 19:12:11,USR-3c8d7,Ueno Daiki,daiki.u@test.jp,qW9&pL1zK#,https://test.jp/api/v1/data?id=100,curl/8.5.0,2048
+2025/12/25 10:44:56,USR-f2e1a,Hill George,g.hill@global-tech.com,zX3#uR5vT$,https://tech.global.com/login,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,2300
+2026/01/08 21:05:33,USR-b5d1e,Takagi Hina,hina_t@example.com,pL8!kT2zG%,https://example.com/api/status,Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0,150
+2026/02/18 15:55:12,USR-9a2f4,Scott Deborah,d.scott@it-services.net,vM5*pC1wX^,https://it-services.net/home,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,34200
+2026/02/21 11:22:33,USR-d7b3c,Chiba Ren,ren.c@it-lab.jp,qL2#jG7vR&,https://it-lab.jp/api/auth,curl/8.4.0,612
+2025/11/28 07:15:09,USR-1c5e9,Green Joshua,j.green@test-corp.org,zW9$pT1mK*,https://internal.test-corp.org/assets/main.js,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0,452100
+2026/01/22 19:40:44,USR-4f3b8,Sano Sora,sora_s@web-corp.jp,hY2@bN5zR!,https://web-corp.jp/api/v2/users,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,1240
+2026/02/10 10:05:12,USR-b8a1f,Adams Frank,f.adams@global.com,vS8%nL3wT#,https://global.com/docs/manual,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,56700
+2026/01/15 22:18:33,USR-d3e7f,Kikuchi Mei,mei.k@example.jp,pM5&rB2vX$,https://example.jp/api/v1/ping,curl/7.88.1,45
+2026/02/05 09:30:59,USR-a2c4e,Baker Helen,h.baker@test.com,zX9!uR7fG%,https://test.com/login,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,2150
+2025/12/12 16:40:22,USR-6f8d1,Hirano Kaito,kaito.h@sample-net.jp,qW2$pL5vS^,https://sample-net.jp/home,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0,32000
+2026/01/28 11:25:45,USR-2b5a9,Nelson Shirley,s.nelson@it-services.net,vN8#mB1wR&,https://it-services.net/api/v1/meta,curl/8.5.0,312
+2026/02/23 10:12:11,USR-d9f4c,Matsui Yuna,yuna.m@example.org,zM5*pT2zX*,https://example.org/search?q=data,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,12400
+2026/02/02 18:05:33,USR-b3e7f,Carter Ronald,r.carter@global-net.com,hY1@bN4mK!,https://global-net.com/api/auth,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,812
+2025/11/20 09:12:12,USR-4d2a8,Ishii Ren,ren_i@test.jp,qL2$kT7vG#,https://test.jp/assets/img/logo.png,Mozilla/5.0 (Android 14; Mobile; rv:121.0) Gecko/121.0 Firefox/121.0,45600
+2026/01/10 14:15:33,USR-f7c1e,Mitchell Karen,k.mitchell@it-corp.org,vS5%nL1wR$,https://it-corp.org/home,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,23100
+2026/02/12 21:05:44,USR-8b3d1,Tsuji Daiki,daiki_t@sample.jp,zX8#uG3fT%,https://sample.jp/api/v1/status,curl/8.4.0,150
+2026/02/15 15:55:12,USR-d2a9f,Perez Dorothy,d.perez@global.net,pL5&jB2vK^,https://global.net/login,Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,2300
+2025/12/05 10:22:33,USR-c4e8f,Honda Yua,yua.h@it-lab.jp,hY9!kT5zW&,https://it-lab.jp/docs/api,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15,45600
+2026/01/25 09:30:11,USR-1f5e2,Roberts Alice,a.roberts@test-corp.com,qW2@pL4vS*,https://test-corp.com/dashboard,curl/7.85.0,12500
+2026/02/20 16:40:45,USR-6b8d3,Sakai Shota,shota.s@web-mail.jp,zM8#rT1mK!,https://web-mail.jp/api/v2/messages,Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0,5400
+2026/01/08 22:05:12,USR-d4a1c,Gomez Nicholas,n.gomez@global-tech.com,vS5$nB7wG#,https://tech.global.com/auth,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,890
+2026/02/18 10:15:33,USR-f3d7e,Asano Yui,yui.a@example.jp,pL9%jG2zX$,https://example.jp/api/v1/ping,curl/8.5.0,45
+2025/11/12 18:30:56,USR-2a9f5,Phillips Ruby,r.phillips@it-services.net,hY8&kT4vR%,https://it-services.net/api/v1/meta,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,312
+2026/01/30 11:25:44,USR-c5e3f,Sugawara Sora,sora.s@test.jp,zX4*uG1vT^,https://test.jp/download/manual.pdf,Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0,204560
+2026/02/23 08:05:22,USR-a8b1d,Evans Gregory,g.evans@global.net,vN5#mP2wG&,https://global.net/home,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,34200
+2025/12/28 14:15:11,USR-d2e4a,Mizuno Ren,ren_m@example.com,pL2!jT8zK*,https://example.com/api/v1/user/1,curl/8.4.0,124
+2026/02/10 19:12:33,USR-f8c1e,Edwards Brandon,b.edwards@it-corp.org,qW9$pL1mK!,https://it-corp.org/login,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,2300
+2026/01/02 10:05:45,USR-3b5f9,Arai Nanami,nanami.a@test.jp,zM5&rT2vX#,https://test.jp/api/status,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,150
+2025/11/25 15:55:12,USR-b4d2c,Stewart Diana,d.stewart@global-tech.com,hY1@bN7mR$,https://tech.global.com/api/v1/auth,Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0,412
+2026/01/22 09:30:33,USR-6e8d1,Shibata Rina,rina.s@example.jp,vS8#mG2wT%,https://example.jp/users/me/profile,curl/7.88.1,2300
+2026/02/20 22:05:22,USR-d7f4a,Morris Stephen,s.morris@it-services.net,pL9%jG1vK^,https://it-services.net/api/v1/meta,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15,312
+2026/02/14 14:15:11,USR-c3b8e,Kaneko Daiki,daiki.k@sample.org,zX4&uR2zG&,https://sample.org/docs/policy,Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0,56700
+2026/01/05 11:25:44,USR-1a2f9,Murphy Beverly,b.murphy@global.net,qW5#pL7vY*,https://global.net/support/ticket,Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1,9800
+2025/12/15 08:30:12,USR-f4d1e,Noda Yua,yua_n@it-corp.jp,hY2@bT8zW!,https://it-corp.jp/api/auth,curl/8.5.0,612
+2026/02/22 19:12:33,USR-b9c4f,Cook Theresa,t.cook@test.com,vM1$nL5wT#,https://test.com/assets/css/style.css,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,15200
+2026/01/28 10:05:45,USR-d2a8b,Ono Sora,sora.o@example.jp,pS8%rT1vX$,https://example.jp/api/v1/user/102,Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0,124
+2026/02/23 21:05:12,USR-6e4f3,Rogers Henry,h.rogers@global-tech.com,zM5&pC2zG&,https://tech.global.com/dashboard,curl/8.4.0,12500
+2026/01/18 15:55:33,USR-b3d7e,Sudo Nanami,nanami.s@sample-it.jp,qL8#jG4vR!,https://sample-it.jp/blog/article/25,Mozilla/5.0 (Macintosh; Intel Mac OS X 14_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,34200
+2026/02/08 10:22:11,USR-f7a1c,Morgan Walter,w.morgan@test.jp,vS9%nB2wG#,https://test.jp/api/v1/ping,Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1,45
+2026/02/15 09:30:44,USR-d2e8f,Hagiwara Ren,ren.h@it-services.net,zX3!uR5vW$,https://it-services.net/api/v1/status,curl/7.81.0,150
+2026/01/05 14:15:12,USR-c5b9d,Bell Brenda,b.bell@global.net,pL8@jT1zX*,https://global.net/api/v2/files,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,1280
+2025/11/12 22:05:33,USR-1d4a8,Okuyama Yuna,yuna.o@example.com,hY1&kT4vG#,https://example.com/api/v1/meta,Mozilla/5.0 (Android 14; Mobile; rv:121.0) Gecko/121.0 Firefox/121.0,312
+2026/02/20 08:30:11,USR-f4b7e,Ward Jesse,j.ward@it-corp.org,qW9$pL2mK!,https://it-corp.org/docs/api,curl/8.5.0,45600
+2026/01/10 19:12:56,USR-b8d1a,Toda Ren,ren_t@sample.org,vS5%nB1wG$,https://sample.org/login,Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:122.0) Gecko/20100101 Firefox/122.0,2300
+2025/12/28 10:05:22,USR-d3a9f,Foster Paula,p.foster@global-tech.com,zX8#uG3vT^,https://tech.global.com/api/status,Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36,150
+2026/02/18 11:25:11,USR-6c4b9,Chiba Hina,hina.c@it-lab.jp,pL5&jT1vK&,https://it-lab.jp/docs/policy,curl/8.4.0,56700
