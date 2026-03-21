@@ -1,5 +1,4 @@
 #coding:utf-8
-import os
 import mariadb
 from flask import Flask, render_template, request, redirect, url_for
 
@@ -31,6 +30,12 @@ def login():
 def main_page():
     # ログイン成功後に表示したいHTMLファイルを指定（例: index.html）
     return render_template("index.html")
+
+@app.route("/apppage")
+def app_page():
+    # ログイン成功後に表示したいHTMLファイルを指定（例: index.html）
+    return render_template("apppage.html")
+
 
 if __name__ == "__main__":
     # Renderは環境変数 PORT を指定してくるので、それを読み取る
