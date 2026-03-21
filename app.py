@@ -42,6 +42,8 @@ def app_page():
     return render_template("apppage.html",datalist=rows)
 
 
+
+
 if __name__ == "__main__":
     # Renderは環境変数 PORT を指定してくるので、それを読み取る
     # 指定がない場合は 10000 を使う（Renderのデフォルトに合わせる）

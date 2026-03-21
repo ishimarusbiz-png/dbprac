@@ -3,6 +3,12 @@
 {% block title %}データ解析ページ：アクセスログ解析ツール{% endblock %}
 
 {% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+
 <h2 class="heading-18">📉アクセスログ解析ツール</h2>
 <br>
 <div class="box-012">
@@ -11,7 +17,7 @@
 </div>
 <br>
 <div class="table-container">
-<table border="1">
+<table table id="logTable" class="display" border="1">
     <thead>
         <tr> 
             <th>日時</th>
@@ -63,4 +69,14 @@
         white-space: nowrap; /* 💡文字を勝手に改行させない（1行でピシッと見せる） */
     }
 </style>
+
+<script>
+$(document).ready( function () {
+    $('#logTable').DataTable({
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.13.4/i18n/ja.json"
+        }
+    });
+});
+</script>
 {% endblock %}
