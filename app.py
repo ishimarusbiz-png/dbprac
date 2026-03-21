@@ -1,8 +1,7 @@
 #coding:utf-8
-import mariadb
 import sys
-import pandas
-import pymysql
+import pandas as pd
+from sqlalchemy import create_engine
 from read import Read #read.py を読み込む
 from flask import Flask, render_template, request, redirect, url_for
 
