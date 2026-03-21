@@ -1,79 +1,57 @@
 # coding: utf-8
 import os
-import mariadb
 import pandas as pd
 from sqlalchemy import create_engine
+# mariadb の代わりに psycopg2 を使うことが一般的ですが、
+# sqlalchemy が裏で動くので import 形式を整理します。
 
 class Read:
     def __init__(self):
-        # Renderの設定画面から自動で情報を取ってくる（コードにはパスワードを書かない！）
-        self.user = os.environ.get("DB_USER", "root")
-        self.password = os.environ.get("DB_PASSWORD", "1111") # ローカルでは空、Renderでは自動取得
+        # Renderの環境変数から情報を取得
+        self.user = os.environ.get("DB_USER", "postgres")
+        self.password = os.environ.get("DB_PASSWORD", "1111")
         self.host = os.environ.get("DB_HOST", "localhost")
         self.database = os.environ.get("DB_NAME", "sample_db")
         
-        # 1. データベースの自動作成（Renderの外部DBを使う場合は不要なことが多いですが、念のため）
-        self.create_db_if_not_exists()
-        
-        # 2. SQLAlchemyエンジンの作成
-        engine_url = f"mysql+mysqlconnector://{self.user}:{self.password}@{self.host}/{self.database}"
+        # 1. 接続URLの校正 (mysql+mysqlconnector -> postgresql)
+        # ※RenderのExternal Connection Stringを参考にします
+        engine_url = f"postgresql://{self.user}:{self.password}@{self.host}/{self.database}"
         self.engine = create_engine(engine_url)
-        print("チェック完了：環境変数を使ってデータベースに接続しました。")
-
-    def create_db_if_not_exists(self):
-        # localhost（自分のPC）の時だけ実行するようにガードをかける
-        if self.host == "localhost":
-            conn = mariadb.connect(user=self.user, password=self.password, host=self.host)
-            cursor = conn.cursor()
-            cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.database}")
-            cursor.execute(f"USE {self.database}") #これを使うと指示
-            conn.commit()
-            cursor.close()
-            conn.close()
+        print("チェック完了：PostgreSQLに接続しました。")
 
     def install(self):
         try:
             csv_file = "sample.csv"
+            # CSVの読み込み（ここはそのまま）
             df = pd.read_csv(csv_file, sep=r',(?![^()]*\))', engine='python', index_col=False)
-            df.to_sql(f'access_DB', con=self.engine, if_exists='replace', index=False)
-            print("Render上のデータベースにCSVデータを同期しました！")
-            conn = mariadb.connect(
-                user=self.user, 
-                password=self.password,
-                host=self.host,
-                database=self.database)
-            cursor = conn.cursor()
-            print("カーソル準備完了")
-            # 修正後：テーブル名（access_DB）を指定する！
-            cursor.execute("SELECT * FROM access_DB ORDER BY 日時 DESC")
-            print("CSVファイルの初期並び替えが完了しました！")
-            conn.commit()
-            cursor.close()
-            conn.close()
+            
+            # 2. データベースへ書き込み
+            # Postgresではテーブル名を小文字にするのが無難です
+            df.to_sql('access_db', con=self.engine, if_exists='replace', index=False)
+            print("PostgreSQLにCSVデータを同期しました！")
+            
         except Exception as e:
             print(f"エラーが発生しました: {e}")
     
-    def get_data(self): # 1. データベースからデータを取ってくる
-        self.install() # ここでデータの同期と並び替えが行われる
+    def get_data(self):
+        self.install()
         
-        # 2. MariaDBに接続して全データをリストで取得
-        import mariadb
-        conn = mariadb.connect(
-            user=db_tool.user, 
-            password=db_tool.password, 
-            host=db_tool.host, 
-            database=db_tool.database
-        )
-        cursor = conn.cursor(dictionary=True) # 辞書形式で取るとHTMLで扱いやすい！
-        cursor.execute("SELECT * FROM access_DB ORDER BY 日時")
-        rows = cursor.fetchall()
-        
-        cursor.close()
-        conn.close()
-
-    # 3. 取ってきたデータを HTML に放り込む！
-        return rows
+        # 3. SQLAlchemyエンジンから直接データを読み込む（mariadbコネクタを使わない方法）
+        # この方がライブラリの依存が少なくて済みます
+        try:
+            with self.engine.connect() as connection:
+                # SQL実行（テーブル名は小文字に合わせます）
+                query = "SELECT * FROM access_db ORDER BY 日時 DESC"
+                df = pd.read_sql(query, connection)
+                
+                # HTMLで扱いやすいように辞書のリスト形式に変換
+                rows = df.to_dict(orient='records')
+                return rows
+        except Exception as e:
+            print(f"データ取得エラー: {e}")
+            return []
 
 # --- 実行 ---
-db_tool = Read()
-db_tool.install()
+if __name__ == "__main__":
+    db_tool = Read()
+    db_tool.install()
