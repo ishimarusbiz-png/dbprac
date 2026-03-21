@@ -65,7 +65,7 @@ class Read:
             database=db_tool.database
         )
         cursor = conn.cursor(dictionary=True) # 辞書形式で取るとHTMLで扱いやすい！
-        cursor.execute("SELECT * FROM access_DB ORDER BY 日時")
+        cursor.execute("SELECT * FROM access_DB ORDER BY 日時 DESC")
         rows = cursor.fetchall()
         
         cursor.close()
