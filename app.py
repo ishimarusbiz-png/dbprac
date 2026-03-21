@@ -34,6 +34,6 @@ def main_page():
 if __name__ == "__main__":
     # Renderは環境変数 PORT を指定してくるので、それを読み取る
     # 指定がない場合は 10000 を使う（Renderのデフォルトに合わせる）
-    port = int(os.environ.get("PORT", 10000))
+    port = int(os.environ.get("PORT", 5000))
     # host="0.0.0.0" は必須！これがないと外から繋がらない
     app.run(host="0.0.0.0", port=port)
