@@ -30,7 +30,7 @@ class LDM:
         self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.config['database']}")
         self.cursor.execute("DROP TABLE IF EXISTS ips")
         self.cursor.execute("""
-            CREATE TABLE ips(
+            CREATE TABLE ips( 
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 IpId VARCHAR(100) NOT NULL,
                 TimeStamp BIGINT NOT NULL,
@@ -40,7 +40,7 @@ class LDM:
                 Bytes INT NOT NULL,
                 Referrer TEXT NOT NULL,
                 UserAgent TEXT NOT NULL)
-        """)
+        """)#上の決まりをスキーマという
         print("テーブルをリセットして作成しました。")
 
     def import_csv(self, csv_file, chunk_size=10000):
