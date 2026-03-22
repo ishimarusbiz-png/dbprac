@@ -6,37 +6,40 @@
 <h2 class="heading-18">📉アクセスログ解析ツール</h2>
 <br>
 <div class="box-012">
-    <span>システム操作説明</span>
-    <p>no text</p>
+    <span>システムについて</span>
+    <p>IpIdの昇順に上位15件のみ表示しています。</p>
 </div>
 <br>
 <div class="table-container">
 <table border="1">
-    <thead>
-        <tr> 
-            <th>日時</th>
-            <th>ID</th>
-            <th>名前</th>
-            <th>メールアドレス</th>
-            <th>パスワード</th>
-            <th>URL</th>
-            <th>UserAgent</th>
-        </tr> </thead>
-    <tbody>
-    {% for item in datalist%}
-         <tr>
-            <td>{{ item.日時 }}</td>
-            <td>{{ item.ID }}</td>
-            <td>{{ item.名前 }}</td>
-            <td>{{ item.メールアドレス }}</td>
-            <td>{{ item.パスワード }}</td>
-            <td>{{ item.URL }}</td>
-            <td>{{ item.UserAgent }}</td>
+
+ <thead>
+    <tr> 
+        <th>IpId</th>
+        <th>TimeStamp</th> <th>Method</th>    <th>Uri (URL)</th> <th>Status</th>    <th>Bytes</th>     <th>Referrer</th>
+        <th>UserAgent</th>
+    </tr> 
+</thead>
+<tbody>
+{% for item in log %}
+    <tr>
+        <td>{{ item.ipid }}</td>
+        <td>{{ item.timestamp }}</td>
+        <td>{{ item.method }}</td>
+        <td>{{ item.uri }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.bytes }}</td>     
+        <td>{{ item.referrer }}</td>  
+        <td>{{ item.ua}}</td>
         </tr>   
-    {% endfor %}
-    </tbody>
+{% endfor %}
+</tbody>
+
+
 </table>
 </div>
+
+<a href="/main">戻る</a>
 <style>
     /* 表全体のデザイン */
 /* 1. テーブルを囲む箱の設定：はみ出したら横スクロールさせる */
