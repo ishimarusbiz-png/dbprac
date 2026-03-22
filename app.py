@@ -40,9 +40,11 @@ db_manager = LDM()
 
 @app.route("/apppage",methods=["GET", "POST"])
 def app_page():
+    print("通常検索")
     db_manager.connect()
     # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
-    db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips  ORDER BY IpId LIMIT 15")
+    db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips ORDER BY IpId LIMIT 15",)
+    #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
     rows = db_manager.cursor.fetchall()
     
     # テンプレートに渡すデータ（辞書のリストにする例）
@@ -63,10 +65,16 @@ def app_page():
 
 @app.route("/result",methods=["GET", "POST"])
 def result():
-    s_words=request.form.get('search')
-    db_manager.connect()
-    # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
-    db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE column<= '{s_words}' ORDER BY IpId  LIMIT 15")
+    print("関数が呼ばれました")
+    try:
+        s_words=request.form.get("search")
+        print(request.form.get("search"))
+        word=f"%{s_words}%"
+        print(f"検索用に変換：{word}")
+    except Exception as e:
+        print("正常に検索ができませんでした")
+    db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE IpId or TimeStamp or Uri or HttpMethod or ResponseCode or Bytes or Referrer or UserAgent like ? ORDER BY IpId LIMIT 15",(s_words,))
+    
     rows = db_manager.cursor.fetchall()
     
     # テンプレートに渡すデータ（辞書のリストにする例）

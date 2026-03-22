@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from dotenv import load_dotenv
 
-class LDM:
+class LDM():
     def __init__(self):
         load_dotenv()
         self.config = {
@@ -31,7 +31,7 @@ class LDM:
         self.cursor.execute("DROP TABLE IF EXISTS ips")
         self.cursor.execute("""
             CREATE TABLE ips( 
-                id INT AUTO_INCREMENT PRIMARY KEY,
+                id INT AUTO_INCREMENT PRIMARY KEY ,
                 IpId VARCHAR(100) NOT NULL,
                 TimeStamp BIGINT NOT NULL,
                 Uri TEXT NOT NULL,
@@ -41,6 +41,7 @@ class LDM:
                 Referrer TEXT NOT NULL,
                 UserAgent TEXT NOT NULL)
         """)#上の決まりをスキーマという
+        #primary key =table一意の値。主キーとも
         print("テーブルをリセットして作成しました。")
 
     def import_csv(self, csv_file, chunk_size=10000):
