@@ -38,7 +38,7 @@ def main_page():
 
 db_manager = LDM()
 
-@app.route("/apppage")
+@app.route("/apppage",methods=["GET", "POST"])
 def app_page():
     db_manager.connect()
     # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
@@ -60,6 +60,29 @@ def app_page():
         })
     
     return render_template("apppage.html", log=log_data)
+
+@app.route("/result",methods=["GET", "POST"])
+def result():
+    s_words=request.form.get('search')
+    db_manager.connect()
+    # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
+    db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE column<= '{s_words}' ORDER BY IpId  LIMIT 15")
+    rows = db_manager.cursor.fetchall()
+    
+    # テンプレートに渡すデータ（辞書のリストにする例）
+    log_data = []
+    for r in rows:
+        log_data.append({
+            "ipid": r[0],
+            "timestamp": r[1],
+            "uri": r[2],
+            "method": r[3],
+            "status": r[4],
+            "bytes": r[5],
+            "referrer": r[6],
+            "ua": r[7]
+        })
+    return render_template("result.html", log=log_data)
 
 # サーバーの起動
 if __name__ == "__main__":
