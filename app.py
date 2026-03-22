@@ -3,8 +3,8 @@ import mariadb
 import sys
 import pandas
 import pymysql
-from read import Read #read.py を読み込む
 from flask import Flask, render_template, request, redirect, url_for
+import os
 
 # Flaskアプリケーションのインスタンス化
 app = Flask(__name__)
@@ -38,14 +38,9 @@ def main_page():
 @app.route("/apppage")
 def app_page():
     # ログイン成功後に表示したいHTMLファイルを指定（例: index.html）
-    db_tool=Read()
-    rows=db_tool.get_data()
-    return render_template("apppage.html",datalist=rows)
+    return render_template("apppage.html")
 
 
+# サーバーの起動
 if __name__ == "__main__":
-    # Renderは環境変数 PORT を指定してくるので、それを読み取る
-    # 指定がない場合は 10000 を使う（Renderのデフォルトに合わせる）
-    port = int(os.environ.get("PORT", 10000))
-    # host="0.0.0.0" は必須！これがないと外から繋がらない
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True, host='0.0.0.0', port=9000)
