@@ -73,6 +73,7 @@ def app_page():
 def result():
     print("関数が呼ばれました")
     try:
+        db_manager.connect()
         s_word=request.form.get("s_words")
         s_kind=request.form.get("s_kinds")
         print(f"{s_word}:{s_kind}")
@@ -83,13 +84,15 @@ def result():
         print("検索が終了しました")
     except Exception as e:
         print("正常に検索ができませんでした")
+        print(e)
+    
     
     try:
         rows = db_manager.cursor.fetchall()
         #課題：処理を軽くするためにループ処理にできないか
     except:
         print("結果処理ができません")
-    
+        print(e)
     # テンプレートに渡すデータ（辞書のリストにする例）
     log_data = []
     for r in rows:
