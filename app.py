@@ -78,8 +78,8 @@ def result():
         print(f"{s_word}:{s_kind}")
         word=f"%{s_word}%"
         print(f"検索用に変換：{word}")
-        db_manager.cursor.execute(f"SELECT * FROM ips WHERE {s_kind} like ? ORDER BY IpId LIMIT 15 OFFSET 0",(word,))
-        #課題　fstring以外でできないか？
+        db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE {s_kind} LIKE ? ORDER BY IpId LIMIT 15",(word,))
+        #課題：fstring以外でできないか？
         print("検索が終了しました")
     except Exception as e:
         print("正常に検索ができませんでした")
