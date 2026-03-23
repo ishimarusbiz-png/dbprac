@@ -51,7 +51,7 @@ def app_page():
 
     
     # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
-    db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips ORDER BY IpId LIMIT 15",)
+    db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips LIMIT 15",)
     #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
     rows = db_manager.cursor.fetchall()
     targets = [
@@ -87,7 +87,7 @@ def result():
         print(f"{s_word}:{s_kind}")
         word=f"%{s_word}%"
         print(f"検索用に変換：{word}")
-        db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE {s_kind} LIKE ? ORDER BY IpId LIMIT 15",(word,))
+        db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE {s_kind} LIKE ? LIMIT 15",(word,))
         #課題：fstring以外でできないか？
         goal=time.perf_counter()
         print(f"{goal-start}秒 検索が終了しました")
@@ -116,6 +116,11 @@ def result():
             "ua": r[7]
         })
     return render_template("result.html", log=log_data)
+
+@app.route("/insert")
+def insert_page():
+    # ログイン成功後に表示したいHTMLファイルを指定（例: index.html）
+    return render_template("index.html")
 
 db_manager.connect()
 # サーバーの起動

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}データ解析ページ：アクセスログ解析ツール{% endblock %}
+
+{% block content %}
+<h2 class="heading-18">📉アクセスログ解析ツール：入力画面</h2>
+<br>
+<div class="box-012">
+    <span>説明</span>
+    <p>no text</p>
+</div>
+<br>
+<div>
+    <form action="/result" method="POST">
+                  	  <label for='title'>データ入力</label>
+              	      <input type="text" class="form-control" name="insert_d" id="insert_d">
+              	      <button type="button">入力</button>
+     </form>
+     <br>
+</div>
+<div id="input_result">
+
+</div>
+
+
+
+<a href="/main">戻る</a>
+<style>
+
+</style>
+
+<script>
+
+console.log(insert_data_display)
+const btn = document.querySelector("button");
+    btn.onclick = () => {
+        
+        alert('書き込みが完了しました！'+insert_data_display);
+    };
+</script>
+
+{% endblock %}
