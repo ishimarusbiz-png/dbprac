@@ -11,6 +11,8 @@ from db import LDM
 app = Flask(__name__)
 CORRECT_PASSWORD = "4311"
 
+
+
 # ルーティング設定（ルートURL "/" にアクセスした時の処理）
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -40,13 +42,17 @@ db_manager = LDM()
 
 @app.route("/apppage",methods=["GET", "POST"])
 def app_page():
+
     print("通常検索")
     db_manager.connect()
     # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
     db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips ORDER BY IpId LIMIT 15",)
     #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
     rows = db_manager.cursor.fetchall()
-    
+    targets = [
+                'IpId', 'TimeStamp', 'Uri', 'HttpMethod', 
+                'ResponseCode', 'Bytes', 'Referrer', 'UserAgent'
+            ]
     # テンプレートに渡すデータ（辞書のリストにする例）
     log_data = []
     for r in rows:
@@ -61,21 +67,28 @@ def app_page():
             "ua": r[7]
         })
     
-    return render_template("apppage.html", log=log_data)
+    return render_template("apppage.html", log=log_data,targets_list=targets)
 
 @app.route("/result",methods=["GET", "POST"])
 def result():
     print("関数が呼ばれました")
     try:
-        s_words=request.form.get("search")
-        print(request.form.get("search"))
-        word=f"%{s_words}%"
+        s_word=request.form.get("s_words")
+        s_kind=request.form.get("s_kinds")
+        print(f"{s_word}:{s_kind}")
+        word=f"%{s_word}%"
         print(f"検索用に変換：{word}")
+        db_manager.cursor.execute(f"SELECT * FROM ips WHERE {s_kind} like ? ORDER BY IpId LIMIT 15 OFFSET 0",(word,))
+        #課題　fstring以外でできないか？
+        print("検索が終了しました")
     except Exception as e:
         print("正常に検索ができませんでした")
-    db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE IpId or TimeStamp or Uri or HttpMethod or ResponseCode or Bytes or Referrer or UserAgent like ? ORDER BY IpId LIMIT 15",(s_words,))
     
-    rows = db_manager.cursor.fetchall()
+    try:
+        rows = db_manager.cursor.fetchall()
+        #課題：処理を軽くするためにループ処理にできないか
+    except:
+        print("結果処理ができません")
     
     # テンプレートに渡すデータ（辞書のリストにする例）
     log_data = []

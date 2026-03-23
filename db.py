@@ -50,15 +50,12 @@ class LDM():
         
         for chunk in pd.read_csv(csv_file, chunksize=chunk_size):
             chunk = chunk.fillna('')
-            
+ 
             # TimeStampの型変換
             if 'TimeStamp' in chunk.columns:
                 chunk['TimeStamp'] = pd.to_numeric(chunk['TimeStamp'], errors='coerce').fillna(0).astype(int)
 
-            target_columns = [
-                'IpId', 'TimeStamp', 'Uri', 'HttpMethod', 
-                'ResponseCode', 'Bytes', 'Referrer', 'UserAgent'
-            ]
+            
             
             data = list(chunk[target_columns].itertuples(index=False, name=None))
             sql = """INSERT INTO ips (IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent) 

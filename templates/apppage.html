@@ -13,7 +13,12 @@
 <div>
     <form action="/result" method="POST">
                   	  <label for='title'>キーワード検索</label>
-              	      <input type="text" class="form-control" name="search" id="search">
+                      <select name="s_kinds">
+                        {% for opt in targets_list %}
+                        <option value ={{opt}}>{{opt}}</option>
+                        {% endfor %}
+                      </select>
+              	      <input type="text" class="form-control" name="s_words" id="s_words">
               	      <button type="submit">検索</button>
      </form>
 </div>
