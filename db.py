@@ -1,6 +1,7 @@
 import mariadb
 import os
 import pandas as pd
+
 from dotenv import load_dotenv
 
 class LDM():
@@ -42,8 +43,13 @@ class LDM():
                 UserAgent TEXT NOT NULL)
         """)#上の決まりをスキーマという
         #primary key =table一意の値。主キーとも
+        #==IpIdをindexに指定
+        
         print("テーブルをリセットして作成しました。")
-
+        try:
+            db_manager.cursor.execute("CREATE INDEX IF NOT EXISTS idx_ipid ON ips (IpId);")
+        except Exception as e:
+            print(f"エラー：{e}")
     def import_csv(self, csv_file, chunk_size=10000):
         """CSVデータをインポートする"""
         print(f"CSVのカラム名: {pd.read_csv(csv_file, nrows=0).columns.tolist()}")

@@ -6,6 +6,8 @@ import pymysql
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from db import LDM
+import time
+import math
 
 # Flaskアプリケーションのインスタンス化
 app = Flask(__name__)
@@ -44,7 +46,10 @@ db_manager = LDM()
 def app_page():
 
     print("通常検索")
-    db_manager.connect()
+    #
+    start=time.perf_counter()
+
+    
     # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
     db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips ORDER BY IpId LIMIT 15",)
     #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
@@ -66,14 +71,17 @@ def app_page():
             "referrer": r[6],
             "ua": r[7]
         })
-    
+    goal=time.perf_counter()
+    print(f"{goal-start}秒 検索が終了しました")
     return render_template("apppage.html", log=log_data,targets_list=targets)
 
 @app.route("/result",methods=["GET", "POST"])
 def result():
     print("関数が呼ばれました")
+    rows=[]
     try:
-        db_manager.connect()
+        start=time.perf_counter()
+        print(start)
         s_word=request.form.get("s_words")
         s_kind=request.form.get("s_kinds")
         print(f"{s_word}:{s_kind}")
@@ -81,7 +89,8 @@ def result():
         print(f"検索用に変換：{word}")
         db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE {s_kind} LIKE ? ORDER BY IpId LIMIT 15",(word,))
         #課題：fstring以外でできないか？
-        print("検索が終了しました")
+        goal=time.perf_counter()
+        print(f"{goal-start}秒 検索が終了しました")
     except Exception as e:
         print("正常に検索ができませんでした")
         print(e)
@@ -108,6 +117,7 @@ def result():
         })
     return render_template("result.html", log=log_data)
 
+db_manager.connect()
 # サーバーの起動
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=9000)
