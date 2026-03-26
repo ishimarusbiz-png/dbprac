@@ -11,7 +11,7 @@
 </div>
 <br>
 
-
+<p>届いているデータの中身: {{ inserted_data }}</p>
 
 
 <div class="table-container">
@@ -25,7 +25,7 @@
     </tr> 
 </thead>
 <tbody>
-{% for item in log %}
+{% for item in inserted_data %}
     <tr>
         <td>{{ item.ipid }}</td>
         <td>{{ item.timestamp }}</td>
@@ -70,4 +70,9 @@
         white-space: nowrap; /* 💡文字を勝手に改行させない（1行でピシッと見せる） */
     }
 </style>
+
+<script>
+    // Pythonから届いたデータを、そのままブラウザのコンソールに表示する
+    console.log("Pythonから届いたデータ:", {{ inserted_data | tojson }});
+</script>
 {% endblock %}

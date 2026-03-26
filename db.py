@@ -89,6 +89,10 @@ class LDM():
         if self.conn: self.conn.close()
         print("接続を閉じました。")
 
+    #★DBより15件のデータを取得する（練習用）
+    def test(self):
+        return
+
     
 
 # ==========================================

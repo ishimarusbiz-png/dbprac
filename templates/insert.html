@@ -13,7 +13,7 @@
 </div>
 <br>
 <div>
-    <form action="/insert" method="POST">
+    <form action="/insert_result" method="POST">
                   	  <label for='title'>データ入力</label>
                       <p></p>
               	      <input type="textarea" class="form-control" name="insert_d" id="insert_d">
@@ -33,26 +33,27 @@
 
 </style>
 
+<!--JSによる通知機能（未実装）-->
 <script>
-const form = document.querySelector("form");
+/*const form = document.querySelector("form");
     form.onsubmit = (event) => {
         event.preventDefault();
-        let insert_data = ""
-        insert_data=document.getElementById("insert_d")
-        insert_data_display=insert_data.value
-        console.log("入力された文字は"+insert_data_display) 
+        //データの受け先を用意
+        let insert_data = "";
+        let insert_data_display="";
+        insert_data=document.getElementById("insert_d");
+        insert_data_display=insert_data.value;
+        console.log("入力された文字は"+insert_data_display)
         alert('書き込みが完了しました！'+insert_data_display);
         try{
             console.log("入力完了ページへ移動します");
-            let url = "/insert_result";
-
-            window.location.href = url;
+            //insert_resultへ飛ぶ
         }
         catch(error){
-            console.log("エラーが発生しました"+error)
+            console.log("エラーが発生しました"+error);
         }
-    };
-
+        
+    };*/
 </script>
 
 {% endblock %}

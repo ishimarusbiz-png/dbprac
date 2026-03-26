@@ -114,26 +114,48 @@ def result():
 # データの新規登録画面を表示する
 @app.route("/insert",methods=["GET", "POST"])
 def insert_page():
-    #★INSERTするデータをリストで取得する
-    #新規登録画面で入力されたデータを受け取るための空リストを準備
-    input_data=[]
-    #入力されたデータを受け取る
-    if request.method == "POST":
-        print("入力データを読み取ります")
-        try:
-            input_str=request.form.get("insert_d")
-            print("入力された文字列データを受け取りました")
-            print(input_str)
-        except Exception as e:
-            print("データを受け取れませんでした")
-        
-    #insert_resultページにinput_dataリストをinsert_data変数に格納して返す
-    return render_template("insert.html",insert_date=input_data)
+
+
+        #入力されたデータを受け取る
+
+    return render_template("insert.html")
 
 @app.route("/insert_result",methods=["GET","POST"])
-
-def insert_result():
-    return render_template("insert_result.html")
+def insert_result(): 
+#★INSERTするデータをリストで取得する
+    #新規登録画面で入力されたデータを受け取るための空リストを準備
+    input_data=[]
+    print("データ受取準備完了")
+    if request.method == "POST":
+        print("入力データを読み取ります")
+    try:
+        input_str=request.form.get("insert_d")
+        print("入力された文字列データを受け取りました");
+        print(input_str)
+    except Exception as e:
+        print(f"インプットエラー：{e}");
+    #文字列にしたデータを、,で区切ってリストにする
+    input_data=input_str.split(",")
+    print("受け取り文字列をリスト化しました");
+    print(input_data)
+    #辞書の形にして、表示する
+    print("リストを表示用の辞書に変換します");
+    try:
+        r=input_data
+        rows_inserted={
+                "ipid": r[0],
+                "timestamp": r[1],
+                "uri": r[2],
+                "method": r[3],
+                "status": r[4],
+                "bytes": r[5],
+                "referrer": r[6],
+                "ua": r[7]
+            }
+        print(rows_inserted);
+    except Exception as e:
+        print(f"読み取りエラー：{e}")
+    return render_template("insert_result.html",inserted_data=rows_inserted)
 
 db_manager.connect()
 # サーバーの起動
