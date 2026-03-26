@@ -109,12 +109,13 @@ def result():
             "referrer": r[6],
             "ua": r[7]
         })
+
     return render_template("result.html", log=log_data)
 
 # データの新規登録画面を表示する
 @app.route("/insert",methods=["GET", "POST"])
 def insert_page():
-
+    
 
         #入力されたデータを受け取る
 
@@ -155,6 +156,7 @@ def insert_result():
         print(rows_inserted);
     except Exception as e:
         print(f"読み取りエラー：{e}")
+    db_manager.input_testdata() #テスト用
     return render_template("insert_result.html",inserted_data=rows_inserted)
 
 db_manager.connect()

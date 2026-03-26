@@ -88,10 +88,16 @@ class LDM():
         if self.cursor: self.cursor.close()
         if self.conn: self.conn.close()
         print("接続を閉じました。")
-
-    #★DBより15件のデータを取得する（練習用）
-    def test(self):
-        return
+    #===
+    #★（練習用）
+    #===
+    def input_testdata(self):
+        """DBより100件のデータをランダムに取得し（練習用）"""
+        print("テスト用テーブルを作成します")
+        self.cursor.execute("CREATE TABLE IF NOT EXISTS ips_test LIKE ips");
+        #確認
+        tables = self.cursor.fetchall()
+        print(f"現在のテーブル一覧: {tables}")
 
     
 
@@ -105,6 +111,7 @@ if __name__ == "__main__":#直接実行時以下の命令
         db_manager.connect()
         db_manager.setup_database()
         db_manager.import_csv("eclog.csv")
+
         
         print("\n--- インポート後のデータ確認 ---")
         logs = db_manager.fetch_recent_logs(5)
