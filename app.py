@@ -54,10 +54,6 @@ def app_page():
     db_manager.cursor.execute("SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips LIMIT 15",)
     #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
     rows = db_manager.cursor.fetchall()
-    targets = [
-                'IpId', 'TimeStamp', 'Uri', 'HttpMethod', 
-                'ResponseCode', 'Bytes', 'Referrer', 'UserAgent'
-            ]
     # テンプレートに渡すデータ（辞書のリストにする例）
     log_data = []
     for r in rows:
@@ -73,7 +69,7 @@ def app_page():
         })
     goal=time.perf_counter()
     print(f"{goal-start}秒 検索が終了しました")
-    return render_template("apppage.html", log=log_data,targets_list=targets)
+    return render_template("apppage.html", log=log_data)
 
 @app.route("/result",methods=["GET", "POST"])
 def result():
@@ -83,11 +79,9 @@ def result():
         start=time.perf_counter()
         print(start)
         s_word=request.form.get("s_words")
-        s_kind=request.form.get("s_kinds")
-        print(f"{s_word}:{s_kind}")
-        word=f"%{s_word}%"
-        print(f"検索用に変換：{word}")
-        db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE {s_kind} LIKE ? LIMIT 15",(word,))
+        print(f"{s_word}")
+        word=f"{s_word}"
+        db_manager.cursor.execute(f"SELECT IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips WHERE IpId = ? LIMIT 15",(word,))
         #課題：fstring以外でできないか？
         goal=time.perf_counter()
         print(f"{goal-start}秒 検索が終了しました")
@@ -117,10 +111,29 @@ def result():
         })
     return render_template("result.html", log=log_data)
 
-@app.route("/insert")
+# データの新規登録画面を表示する
+@app.route("/insert",methods=["GET", "POST"])
 def insert_page():
-    # ログイン成功後に表示したいHTMLファイルを指定（例: index.html）
-    return render_template("index.html")
+    #★INSERTするデータをリストで取得する
+    #新規登録画面で入力されたデータを受け取るための空リストを準備
+    input_data=[]
+    #入力されたデータを受け取る
+    if request.method == "POST":
+        print("入力データを読み取ります")
+        try:
+            input_str=request.form.get("insert_d")
+            print("入力された文字列データを受け取りました")
+            print(input_str)
+        except Exception as e:
+            print("データを受け取れませんでした")
+        
+    #insert_resultページにinput_dataリストをinsert_data変数に格納して返す
+    return render_template("insert.html",insert_date=input_data)
+
+@app.route("/insert_result",methods=["GET","POST"])
+
+def insert_result():
+    return render_template("insert_result.html")
 
 db_manager.connect()
 # サーバーの起動

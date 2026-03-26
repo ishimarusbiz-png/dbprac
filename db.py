@@ -74,6 +74,10 @@ class LDM():
             except mariadb.Error as e:
                 print(f"挿入エラー: {e}")
 
+    #INSERT実行メソッド
+    def insert_data(self):
+        print("DBのインサートを開始します")
+
     def fetch_recent_logs(self, limit=5):
         """最新のログを取得して表示する"""
         self.cursor.execute("SELECT * FROM ips LIMIT ?", (limit,))
@@ -84,6 +88,8 @@ class LDM():
         if self.cursor: self.cursor.close()
         if self.conn: self.conn.close()
         print("接続を閉じました。")
+
+    
 
 # ==========================================
 # メイン処理

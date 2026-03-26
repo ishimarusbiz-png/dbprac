@@ -7,18 +7,22 @@
 <br>
 <div class="box-012">
     <span>説明</span>
-    <p>no text</p>
+    <p>IpId,TimeStamp,HttpMethod,Uri(URL),Status,Bytes,<br>
+        Referrer,UserAgentを半角カンマ区切りで入力してください<br>
+    ※数値によってはエラーが起きる可能性があります</p>
 </div>
 <br>
 <div>
-    <form action="/result" method="POST">
+    <form action="/insert" method="POST">
                   	  <label for='title'>データ入力</label>
-              	      <input type="text" class="form-control" name="insert_d" id="insert_d">
-              	      <button type="button">入力</button>
+                      <p></p>
+              	      <input type="textarea" class="form-control" name="insert_d" id="insert_d">
+        <button type="submit">入力</button>
      </form>
+     
      <br>
 </div>
-<div id="input_result">
+<div >
 
 </div>
 
@@ -30,13 +34,25 @@
 </style>
 
 <script>
-
-console.log(insert_data_display)
-const btn = document.querySelector("button");
-    btn.onclick = () => {
-        
+const form = document.querySelector("form");
+    form.onsubmit = (event) => {
+        event.preventDefault();
+        let insert_data = ""
+        insert_data=document.getElementById("insert_d")
+        insert_data_display=insert_data.value
+        console.log("入力された文字は"+insert_data_display) 
         alert('書き込みが完了しました！'+insert_data_display);
+        try{
+            console.log("入力完了ページへ移動します");
+            let url = "/insert_result";
+
+            window.location.href = url;
+        }
+        catch(error){
+            console.log("エラーが発生しました"+error)
+        }
     };
+
 </script>
 
 {% endblock %}
