@@ -121,7 +121,7 @@ def insert_page():
 
     return render_template("insert.html")
 
-@app.route("/insert_result",methods=["GET","POST"])
+@app.route("/insert_result",methods=["POST"])
 def insert_result(): 
 #★INSERTするデータをリストで取得する
     #新規登録画面で入力されたデータを受け取るための空リストを準備
@@ -156,7 +156,6 @@ def insert_result():
         print(rows_inserted);
     except Exception as e:
         print(f"読み取りエラー：{e}")
-    db_manager.input_testdata() #テスト用
     return render_template("insert_result.html",inserted_data=rows_inserted)
 
 db_manager.connect()
