@@ -3,7 +3,7 @@ import mariadb
 import sys
 import pandas
 import pymysql
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,session
 import os
 from db import LDM
 import time
@@ -11,6 +11,7 @@ import math
 
 # Flaskアプリケーションのインスタンス化
 app = Flask(__name__)
+app.secret_key = 'anything_is_ok'
 CORRECT_PASSWORD = "4311"
 
 
@@ -193,6 +194,27 @@ def delete_select_page():
     goal=time.perf_counter()
     print(f"{goal-start}秒 検索が終了しました")
     return render_template("delete_select.html", log=log_data)
+
+@app.route("/delete_result", methods=["GET", "POST"])
+def delete_result():
+    # 1. データが送られてきた時 (JavaScriptの fetch から)
+    if request.method == "POST":
+        target_id = request.form.get('id')
+        session['target_id'] = target_id # セッションに保存
+        return "OK", 200 # JavaScriptに「受け取ったよ」と返事をして終了
+
+    # 2. 画面を表示する時 (window.location.href から)
+    # ここは POST 以外の時（つまり GET の時）だけ実行されます
+    display_id = session.get('target_id')
+    print(f"削除対象ID：{display_id}")
+    query = "SELECT * FROM ips_test WHERE id = %s"
+    db_manager.cursor.execute(query, (display_id,))
+
+    # 1行取得
+    item_selected = db_manager.cursor.fetchone()
+
+    return render_template("delete_result.html", id_selected=display_id,log=item_selected)
+
 
 
 

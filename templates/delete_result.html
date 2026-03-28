@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
-{% block title %}データ削除ページ：アクセスログ解析ツール{% endblock %}
+{% block title %}データ解析ページ：アクセスログ解析ツール{% endblock %}
 
 {% block content %}
 <h2 class="heading-18">📉アクセスログ解析ツール</h2>
 <br>
 <div class="box-012">
-    <span>システムについて</span>
-    <p>削除したいデータをクリックしてください。</p>
+    <span>確認</span>
+    <p>以下のデータを削除しますか？</p>
 </div>
 <br>
 
@@ -16,7 +16,6 @@
 
  <thead>
     <tr> 
-        <th></th>
         <th>id</th>
         <th>IpId</th>
         <th>TimeStamp</th> <th>HttpMethod</th>    <th>Uri (URL)</th> <th>Status</th>    <th>Bytes</th>     <th>Referrer</th>
@@ -24,29 +23,25 @@
     </tr> 
 </thead>
 <tbody>
-{% for item in log %}
-    <tr>
-        <td><button>削除</button></td>
-        <td>{{ item.id }}</td>
-        <td>{{ item.ipid }}</td>
-        <td>{{ item.timestamp }}</td>
-        <td>{{ item.method }}</td>
-        <td>{{ item.uri }}</td>
-        <td>{{ item.status }}</td>
-        <td>{{ item.bytes }}</td>     
-        <td>{{ item.referrer }}</td>  
-        <td>{{ item.ua}}</td>
-        </tr>   
-{% endfor %}
+  <tr>
+    {% for value in log %}
+      <td>{{value}}</td>
+    {% endfor %}
+  </tr>
 </tbody>
 
 
 </table>
 </div>
+<button>OK</button>
+<br>
+
+<a href="/delete_select">戻る</a>
+<a href="/main">トップへ戻る</a>
+</div>
 
 
 
-<a href="/main">戻る</a>
 <style>
     /* 表全体のデザイン */
 /* 1. テーブルを囲む箱の設定：はみ出したら横スクロールさせる */
@@ -75,28 +70,6 @@
 </style>
 
 <script>
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        button.addEventListener('click', async (e) => {
-            const row = e.target.closest('tr');
-            const cells = row.querySelectorAll('td');
-            const targetId = cells[1].innerText.trim();
 
-            // 💡 FormData オブジェクトを作成（封筒を作るイメージ）
-            const formData = new FormData();
-            formData.append('id', targetId); // 「id」という名前で中身を入れる
-
-            // 💡 fetch 送信（headers は指定しなくてOK！）
-            const response = await fetch("/delete_result", {
-                method: "POST",
-                body: formData // そのまま送る
-            });
-
-            if (response.ok) {
-                window.location.href = "/delete_result";
-            }
-        });
-    });
 </script>
-
 {% endblock %}
