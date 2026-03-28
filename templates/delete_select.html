@@ -1,45 +1,50 @@
 {% extends "layout.html" %}
 
-{% block title %}データ解析ページ：アクセスログ解析ツール{% endblock %}
+{% block title %}データ削除ページ：アクセスログ解析ツール{% endblock %}
 
 {% block content %}
 <h2 class="heading-18">📉アクセスログ解析ツール</h2>
 <br>
 <div class="box-012">
-    <span>書き込み完了！</span>
-    <p>書き込まれたデータを表示しています</p>
+    <span>システムについて</span>
+    <p>削除したいデータをクリックしてください。</p>
 </div>
 <br>
-
-
 
 <div class="table-container">
 <table border="1">
 
  <thead>
     <tr> 
+        <th></th>
+        <th>id</th>
         <th>IpId</th>
         <th>TimeStamp</th> <th>HttpMethod</th>    <th>Uri (URL)</th> <th>Status</th>    <th>Bytes</th>     <th>Referrer</th>
         <th>UserAgent</th>
     </tr> 
 </thead>
 <tbody>
+{% for item in log %}
     <tr>
-        <td>{{ inserted_data.ipid }}</td>
-        <td>{{ inserted_data.timestamp }}</td>
-        <td>{{ inserted_data.method }}</td>
-        <td>{{ inserted_data.uri }}</td>
-        <td>{{ inserted_data.status }}</td>
-        <td>{{ inserted_data.bytes }}</td>     
-        <td>{{ inserted_data.referrer }}</td>  
-        <td>{{ inserted_data.ua }}</td>
-    </tr>   
+        <td><button>削除</button></td>
+        <td>{{ item.id }}</td>
+        <td>{{ item.ipid }}</td>
+        <td>{{ item.timestamp }}</td>
+        <td>{{ item.method }}</td>
+        <td>{{ item.uri }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.bytes }}</td>     
+        <td>{{ item.referrer }}</td>  
+        <td>{{ item.ua}}</td>
+        </tr>   
+{% endfor %}
 </tbody>
+
 
 </table>
 </div>
 
-<a href="/main">トップへ戻る</a>
+<a href="/main">戻る</a>
 <style>
     /* 表全体のデザイン */
 /* 1. テーブルを囲む箱の設定：はみ出したら横スクロールさせる */
@@ -68,7 +73,7 @@
 </style>
 
 <script>
-    // Pythonから届いたデータを、そのままブラウザのコンソールに表示する
-    console.log("Pythonから届いたデータ:", {{ inserted_data | tojson }});
+document.addEventListener('')
 </script>
+
 {% endblock %}

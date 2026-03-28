@@ -139,24 +139,66 @@ def insert_result():
     input_data=input_str.split(",")
     print("受け取り文字列をリスト化しました");
     print(input_data)
-    #辞書の形にして、表示する
+    #==DB処理==
+    db_manager.insert(input_data);
+    print(f"DB挿入後のリストの中身: {input_data}") # ★ここを確認！
+    print(f"要素の数: {len(input_data)}")
+    #辞書の形にする
     print("リストを表示用の辞書に変換します");
     try:
         r=input_data
-        rows_inserted={
-                "ipid": r[0],
-                "timestamp": r[1],
-                "uri": r[2],
-                "method": r[3],
-                "status": r[4],
-                "bytes": r[5],
-                "referrer": r[6],
-                "ua": r[7]
-            }
-        print(rows_inserted);
-    except Exception as e:
-        print(f"読み取りエラー：{e}")
+        rows_inserted = {
+            "id":        r[0], # 101
+            "ipid":      r[1], # '12DE'
+            "timestamp": r[2], # '637108...'
+            "uri":       r[3], # '/wyszukiwanie...'
+            "method":    r[4], # 'GET'
+            "status":    r[5], # '200'
+            "bytes":     r[6], # '9666'
+            "referrer":  r[7], # '-'
+            "ua":        r[8]  # 要素が9個あるのでr[8]まで取得可能
+        }
+        print(f"作成された辞書: {rows_inserted}")
+    except IndexError as e:
+        print(f"インデックスエラーが発生しました。要素数が足りません: {e}")
+        rows_inserted = {"error": "データの形式が正しくありません"}
     return render_template("insert_result.html",inserted_data=rows_inserted)
+
+@app.route("/delete_select",methods=["GET", "POST"])
+def delete_select_page():
+
+    print("DBを表示")
+    #
+    start=time.perf_counter()
+
+    
+    # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
+    db_manager.cursor.execute("SELECT id,IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips_test ",)
+    #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
+    rows = db_manager.cursor.fetchall()
+    # テンプレートに渡すデータ（辞書のリストにする例）
+    log_data = []
+    for r in rows:
+        log_data.append({
+            "id" :r[0],
+            "ipid": r[1],
+            "timestamp": r[2],
+            "uri": r[3],
+            "method": r[4],
+            "status": r[5],
+            "bytes": r[6],
+            "referrer": r[7],
+            "ua": r[8]
+        })
+    goal=time.perf_counter()
+    print(f"{goal-start}秒 検索が終了しました")
+    return render_template("delete_select.html", log=log_data)
+
+
+
+
+db_manager = LDM()
+
 
 db_manager.connect()
 # サーバーの起動

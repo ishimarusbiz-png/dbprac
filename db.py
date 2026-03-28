@@ -107,7 +107,7 @@ class LDM():
         try:
 
             sql_input = """INSERT INTO ips_test (IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent)VALUES (?, ?, ?, ?, ?, ?, ?, ?)"""
-            #＜没処理案＞:下記のコードにすることで処理速度が500倍になりました
+            #＜没処理案＞:書き換えたコードにすることで処理速度が500倍になりました
             # self.cursor.execute("SELECT * FROM ips")
             # target_datas=self.cursor.fetchmany(100)
             # cleaned_data = self.cursor.execute("SELECT * FROM ips")
@@ -125,13 +125,38 @@ class LDM():
         finally:
             goal=time.perf_counter();
             print(f"{goal-start}秒 検索が終了しました");
-        self.cursor.execute('SELECT * FROM ips_test WHERE id=1');
-        print(f"入力完了、最初のデータ：{self.cursor.fetchone()}");
+        self.cursor.execute("SELECT * FROM ips_test");
+        print(f"入力完了、データ：{self.cursor.fetchall()}");
         self.cursor.execute("SELECT COUNT(*) FROM ips_test")
         total_count=self.cursor.fetchone()[0];
         print(f"全件数：{total_count}件");
 
     def insert(self,list):
+        print("==INSERT開始==")
+        print(f"入力データ：{list}");
+        print("IDを追加")
+        self.cursor.execute("SELECT COUNT(*)  FROM ips_test");
+        total=self.cursor.fetchone();
+        data_total=total[0]
+        print(data_total)
+        data_total+=1;
+        list.insert(0,data_total);
+        print(f"ID追加後のデータ：{list}")
+
+        data_tuple=tuple(list)
+        print(f"タプル化：{data_tuple}");
+
+        #タプルをDBに入れる
+        try:
+            self.cursor.execute("SELECT * FROM ips_test")
+            self.cursor.execute(f"INSERT INTO ips_test VALUES {data_tuple}")
+            self.cursor.execute("SELECT * FROM ips_test")
+            inserted_data=self.cursor.fetchall()
+            print(inserted_data);
+        except Exception as e:
+            print(f"エラー：{e}")
+
+        return inserted_data
 
 
     
