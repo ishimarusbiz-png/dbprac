@@ -2,3 +2,4 @@
 *.env
 static/
 db_base.py
+.git

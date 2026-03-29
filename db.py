@@ -137,11 +137,6 @@ class LDM():
         print("IDを追加")
         self.cursor.execute("SELECT COUNT(*)  FROM ips_test");
         total=self.cursor.fetchone();
-        data_total=total[0]
-        print(data_total)
-        data_total+=1;
-        list.insert(0,data_total);
-        print(f"ID追加後のデータ：{list}")
 
         data_tuple=tuple(list)
         print(f"タプル化：{data_tuple}");

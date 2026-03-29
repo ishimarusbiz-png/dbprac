@@ -33,7 +33,11 @@
 
 </table>
 </div>
-<button>OK</button>
+<form action="/delete_complete" method="POST">
+    <button type="submit" class="button-confirm">OK（削除を確定する）</button>
+    <br>
+    <a href="/delete_select" class="button-cancel">キャンセル</a>
+</form>
 <br>
 
 <a href="/delete_select">戻る</a>

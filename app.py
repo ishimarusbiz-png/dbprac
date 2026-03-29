@@ -9,6 +9,7 @@ from db import LDM
 import time
 import math
 
+print("START")
 # Flaskアプリケーションのインスタンス化
 app = Flask(__name__)
 app.secret_key = 'anything_is_ok'
@@ -215,7 +216,43 @@ def delete_result():
 
     return render_template("delete_result.html", id_selected=display_id,log=item_selected)
 
+@app.route("/delete_complete", methods=["GET", "POST"])
+def delete_complete():
+    display_id=session.get('target_id');
+    query="DELETE FROM ips_test WHERE id = %s"
+    db_manager.cursor.execute(query, (display_id,))
+    print("削除完了")
+    return render_template("delete_result.html", id_selected=display_id)
 
+@app.route("/update_select", methods=["GET", "POST"])
+def update_select():
+    
+    print("DBを表示")
+    #
+    start=time.perf_counter()
+
+    
+    # 辞書形式で取得できるように設定（Cursorクラスを変更するか手動変換）
+    db_manager.cursor.execute("SELECT id,IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent FROM ips_test ",)
+    #もし複数の列（Uri または UserAgent など）から探したい場合は、以下のように OR でつなぐ必要 X [*]
+    rows = db_manager.cursor.fetchall()
+    # テンプレートに渡すデータ（辞書のリストにする例）
+    log_data = []
+    for r in rows:
+        log_data.append({
+            "id" :r[0],
+            "ipid": r[1],
+            "timestamp": r[2],
+            "uri": r[3],
+            "method": r[4],
+            "status": r[5],
+            "bytes": r[6],
+            "referrer": r[7],
+            "ua": r[8]
+        })
+    goal=time.perf_counter()
+    print(f"{goal-start}秒 検索が終了しました")
+    return render_template("update_select.html",log=log_data)
 
 
 

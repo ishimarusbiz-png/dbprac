@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %}データ更新ページ：アクセスログ解析ツール{% endblock %}
+
+{% block content %}
+<h2 class="heading-18">データ更新：📉アクセスログ解析ツール</h2>
+<br>
+<div class="box-012">
+    <span>システムについて</span>
+    <p>更新したいデータをクリックしてください。</p>
+</div>
+<br>
+
+<div class="table-container">
+<table border="1">
+
+ <thead>
+    <tr> 
+        <th></th>
+        <th>id</th>
+        <th>IpId</th>
+        <th>TimeStamp</th> <th>HttpMethod</th>    <th>Uri (URL)</th> <th>Status</th>    <th>Bytes</th>     <th>Referrer</th>
+        <th>UserAgent</th>
+    </tr> 
+</thead>
+<tbody>
+{% for item in log %}
+    <tr>
+        <td><button>更新</button></td>
+        <td>{{ item.id }}</td>
+        <td>{{ item.ipid }}</td>
+        <td>{{ item.timestamp }}</td>
+        <td>{{ item.method }}</td>
+        <td>{{ item.uri }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.bytes }}</td>     
+        <td>{{ item.referrer }}</td>  
+        <td>{{ item.ua}}</td>
+        </tr>   
+{% endfor %}
+</tbody>
+
+
+</table>
+</div>
+
+
+
+<a href="/main">戻る</a>
+<style>
+    /* 表全体のデザイン */
+/* 1. テーブルを囲む箱の設定：はみ出したら横スクロールさせる */
+    .table-container {
+        width: 100%;
+        overflow-x: auto; /* 横方向にはみ出したらスクロールバーを出す */
+        -webkit-overflow-scrolling: touch; /* スマホでスルスル動くようにする */
+    }
+
+    /* 2. テーブル自体の設定：最低限の幅を確保しつつ、基本は100% */
+    table {
+        width: 100%;
+        min-width: 800px; /* 💡ここがポイント！項目が多いので、これより狭くならないようにして文字崩れを防ぐ */
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fff;
+        table-layout: auto; /* 内容に合わせて幅を自動調整 */
+    }
+
+    /* 文字が重ならないように余白を調整 */
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        white-space: nowrap; /* 💡文字を勝手に改行させない（1行でピシッと見せる） */
+    }
+</style>
+
+<script>
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('click', async (e) => {
+            const row = e.target.closest('tr');
+            const cells = row.querySelectorAll('td');
+            const targetId = cells[1].innerText.trim();
+
+            // 💡 FormData オブジェクトを作成（封筒を作るイメージ）
+            const formData = new FormData();
+            formData.append('id', targetId); // 「id」という名前で中身を入れる
+
+            // 💡 fetch 送信（headers は指定しなくてOK！）
+            console.log("完了画面に遷移します")
+            const response = await fetch("/update_result", {
+                method: "POST",
+                body: formData // そのまま送る
+            });
+
+            if (response.ok) {
+                window.location.href = "/update_result";
+            }
+        });
+    });
+    
+</script>
+
+{% endblock %}

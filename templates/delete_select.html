@@ -87,6 +87,7 @@
             formData.append('id', targetId); // 「id」という名前で中身を入れる
 
             // 💡 fetch 送信（headers は指定しなくてOK！）
+            console.log("完了画面に遷移します")
             const response = await fetch("/delete_result", {
                 method: "POST",
                 body: formData // そのまま送る
@@ -97,6 +98,7 @@
             }
         });
     });
+    
 </script>
 
 {% endblock %}
