@@ -29,7 +29,7 @@ class LDM():
     def setup_database(self):
         """DBとテーブルを初期化する"""
         self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.config['database']}")
-        self.cursor.execute("DROP TABLE IF EXISTS ips")
+        self.cursor.execute("DROP TABLE IF EXISTS ips_test")
         self.cursor.execute("""
             CREATE TABLE ips( 
                 id INT AUTO_INCREMENT PRIMARY KEY ,
@@ -44,6 +44,7 @@ class LDM():
         """)#上の決まりをスキーマという
         #primary key =table一意の値。主キーとも
         #==IpIdをindexに指定
+        self.cursor.execute("ALTER TABLE ips_test AUTO_INCREMENT = 100;")
         
         print("テーブルをリセットして作成しました。")
         try:
@@ -65,8 +66,8 @@ class LDM():
             target_columns=["IpId", "TimeStamp", "Uri", "HttpMethod", "ResponseCode", "Bytes", "Referrer", "UserAgent"]
             
             data = list(chunk[target_columns].itertuples(index=False, name=None));
-            sql = """INSERT INTO ips (IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent) 
-                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)"""
+            sql = """INSERT INTO ips (id,IpId, TimeStamp, Uri, HttpMethod, ResponseCode, Bytes, Referrer, UserAgent) 
+                     VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)"""
             
             try:
                 self.cursor.executemany(sql, data);
@@ -135,16 +136,22 @@ class LDM():
         print("==INSERT開始==")
         print(f"入力データ：{list}");
         print("IDを追加")
-        self.cursor.execute("SELECT COUNT(*)  FROM ips_test");
-        total=self.cursor.fetchone();
+    # --- ここがポイント！ ---
+        # 0番目（先頭）に None を差し込むことで、自動採番(AUTO_INCREMENT)を動かします
+        list.insert(0, None) 
+        # -----------------------
 
         data_tuple=tuple(list)
         print(f"タプル化：{data_tuple}");
 
         #タプルをDBに入れる
         try:
+            print("DB選択")
             self.cursor.execute("SELECT * FROM ips_test")
-            self.cursor.execute(f"INSERT INTO ips_test VALUES {data_tuple}")
+            print("INSERT実行")
+            query = "INSERT INTO ips_test VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s)"
+            self.cursor.execute(query,data_tuple)
+            print("格納")
             self.cursor.execute("SELECT * FROM ips_test")
             inserted_data=self.cursor.fetchall()
             print(inserted_data);

@@ -254,6 +254,66 @@ def update_select():
     print(f"{goal-start}秒 検索が終了しました")
     return render_template("update_select.html",log=log_data)
 
+@app.route("/update_result", methods=["GET", "POST"])
+def update_result():
+    # 1. データが送られてきた時 (JavaScriptの fetch から)
+    if request.method == "POST":
+        print("データ入力開始")
+        print("ID取得")
+        target_id = request.form.get('id')
+        session['target_id'] = target_id # セッションに保存
+
+        return "OK", 200 # JavaScriptに「受け取ったよ」と返事をして終了
+
+    # 2. 画面を表示する時 (window.location.href から)
+    # ここは POST 以外の時（つまり GET の時）だけ実行されます
+    display_id = session.get('target_id')
+    print(f"更新対象ID：{display_id}")
+    query = "SELECT * FROM ips_test WHERE id = %s"
+    db_manager.cursor.execute(query, (display_id,))
+
+    # 1行取得
+    item_selected = db_manager.cursor.fetchone()
+
+    return render_template("update_result.html", id_selected=display_id,log=item_selected)
+
+@app.route("/update_complete", methods=["GET", "POST"])
+def update_complete():
+    #sessionを使い、update_resultからフォームの値を読み込み
+    print("対象IDを補足")
+    target_id = session.get('target_id')
+    session['target_id']=target_id
+    print("入力データ取得")
+    inputed_str = request.form.get('insert_d')
+    session['insert_d'] = inputed_str
+    print(inputed_str)
+    print(f"完了{target_id}｜{inputed_str}")
+
+    #入力データをタプル化する
+    datalist=inputed_str.split(",");
+    # print(f"データをリスト化{datalist}")
+    # datalist.insert(0,target_id)
+    data_t=tuple(datalist)
+    print(f"データをタプル化{data_t}")
+
+    # query="SELECT * FROM ips_test WHERE id = %s"
+    # db_manager.cursor.execute(query, (target_id,))
+
+    print("==UPDATE開始==")
+    print("クエリを設定")
+    query=f"""
+    UPDATE ips_test 
+    SET ipid=%s, timestamp=%s, uri=%s, httpmethod=%s, responsecode=%s, bytes=%s, referrer=%s, useragent=%s 
+    WHERE id = %s"""
+    print("因数を設定")
+    execute_data = data_t + (target_id,)
+    db_manager.cursor.execute(query,execute_data)
+    db_manager.conn.commit()
+    db_manager.cursor.execute("SELECT * FROM ips_test WHERE id = %s", (target_id,))
+    result_tuple=db_manager.cursor.fetchone()
+    print("更新完了")
+    print(f"タプル化完了{result_tuple}")
+    return render_template("update_complete.html", id_selected=target_id,log=result_tuple)
 
 
 db_manager = LDM()

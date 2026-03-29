@@ -7,9 +7,24 @@
 <br>
 <div class="box-012">
     <span>確認</span>
-    <p>以下のデータを削除しますか？</p>
+    <p>表示中のデータを更新します。値を入力してください。<br>
+        IpId,TimeStamp,HttpMethod,Uri(URL),Status,Bytes,<br>
+        Referrer,UserAgentを半角カンマ区切りで入力してください<br>
+    ※数値によってはエラーが起きる可能性があります
+    </p>
 </div>
 <br>
+
+<div>
+    <form action="/update_complete" method="POST">
+                  	  <label for='title'>データ入力</label>
+                      <p></p>
+              	      <input type="textarea" class="form-control" name="insert_d" id="insert_d">
+        <button type="submit">更新</button>
+     </form>
+     
+     <br>
+</div>
 
 <div class="table-container">
 <table border="1">
@@ -32,15 +47,10 @@
 
 
 </table>
-</div>
-<form action="/delete_complete" method="POST">
-    <button type="submit" class="button-confirm">OK（削除を確定する）</button>
-    <br>
-    <a href="/delete_complete" class="button-cancel">キャンセル</a>
-</form>
+    <a href="/update_select" class="button-cancel">キャンセル</a>
 <br>
 
-<a href="/delete_select">戻る</a>
+<a href="/update_select">戻る</a>
 <a href="/main">トップへ戻る</a>
 </div>
 
